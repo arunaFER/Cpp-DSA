@@ -42,6 +42,10 @@ int main(){
 
     linkedList.reverseRecursionDisplay();
 
+    linkedList.recursionReverse();
+
+    linkedList.display();
+
     return 0;
 }
 

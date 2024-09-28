@@ -13,8 +13,13 @@ public:
     void insertAtBeginning(int value);
     void insertAtPosition(int value, int position);
     void insertAtEnd(int value);
+    
     void deleteNode(int position);
+    
     void reverseList();
+    void recursionReverseListHelper(Node* n);
+    void recursionReverse();
+    
     void display();
     void recursionDisplayHelper(Node* n);
     void recursionDisplay();

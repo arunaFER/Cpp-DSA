@@ -112,6 +112,30 @@ void LinkedList::reverseList(){
     head = prev;
 }
 
+
+
+void LinkedList::recursionReverseListHelper(Node* n){
+    if (n->next == nullptr){
+        head = n;
+        return;
+    }
+
+    recursionReverseListHelper(n->next);
+
+    Node* m = n->next;
+    m->next = n;
+    n->next = nullptr;    
+}
+    
+void LinkedList::recursionReverse(){
+    if (head == nullptr)
+        return;
+
+    recursionReverseListHelper(head);
+}
+
+
+
 void LinkedList::display(){
     Node* temp = head;
     std::cout << "Linked list: ";
@@ -129,6 +153,7 @@ void LinkedList::display(){
 }
 
 
+
 void LinkedList::recursionDisplayHelper(Node* n){
     if (n == nullptr)
         return;
@@ -142,6 +167,7 @@ void LinkedList::recursionDisplay(){
     LinkedList::recursionDisplayHelper(head);
     std::cout << std::endl;
 }
+
 
 
 void LinkedList::reverseRecursionDisplayHelper(Node* n){
