@@ -38,6 +38,10 @@ int main(){
 
     linkedList.display(); // 9 2 3 4 -17
 
+    linkedList.recursionDisplay();
+
+    linkedList.reverseRecursionDisplay();
+
     return 0;
 }
 

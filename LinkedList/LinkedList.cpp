@@ -127,3 +127,34 @@ void LinkedList::display(){
     }
     std::cout << std::endl;
 }
+
+
+void LinkedList::recursionDisplayHelper(Node* n){
+    if (n == nullptr)
+        return;
+
+    std::cout << n->data << " ";
+    LinkedList::recursionDisplayHelper(n->next);
+}
+
+void LinkedList::recursionDisplay(){
+    std::cout << "Recursion Linked list: ";
+    LinkedList::recursionDisplayHelper(head);
+    std::cout << std::endl;
+}
+
+
+void LinkedList::reverseRecursionDisplayHelper(Node* n){
+    if (n == nullptr)
+        return;
+
+    LinkedList::reverseRecursionDisplayHelper(n->next);
+    std::cout << n->data << " ";
+}
+
+void LinkedList::reverseRecursionDisplay(){
+    std::cout << "Reversed Recursion Linked list: ";
+    LinkedList::reverseRecursionDisplayHelper(head);
+    std::cout << std::endl;
+}
+

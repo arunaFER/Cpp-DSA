@@ -16,6 +16,10 @@ public:
     void deleteNode(int position);
     void reverseList();
     void display();
+    void recursionDisplayHelper(Node* n);
+    void recursionDisplay();
+    void reverseRecursionDisplayHelper(Node* n);
+    void reverseRecursionDisplay();
 };
 
 #endif
