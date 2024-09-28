@@ -14,6 +14,7 @@ public:
     void insertAtPosition(int value, int position);
     void insertAtEnd(int value);
     void deleteNode(int position);
+    void reverseList();
     void display();
 };
 

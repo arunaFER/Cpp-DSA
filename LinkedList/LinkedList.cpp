@@ -90,6 +90,28 @@ void LinkedList::deleteNode(int position){
     delete temp2;
 }
 
+void LinkedList::reverseList(){
+
+    if (head == nullptr)
+        return;
+
+    Node* current; 
+    Node* prev {nullptr}; 
+    Node* next {nullptr};
+
+    current = head;
+
+    while (current != nullptr)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    head = prev;
+}
+
 void LinkedList::display(){
     Node* temp = head;
     std::cout << "Linked list: ";

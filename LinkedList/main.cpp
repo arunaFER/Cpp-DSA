@@ -34,6 +34,10 @@ int main(){
 
     linkedList.display(); // -17 4 3 2 9
 
+    linkedList.reverseList();
+
+    linkedList.display(); // 9 2 3 4 -17
+
     return 0;
 }
 
