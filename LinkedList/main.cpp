@@ -46,6 +46,10 @@ int main(){
 
     linkedList.display();
 
+    linkedList.stackReverse();
+
+    linkedList.display();
+
     return 0;
 }
 

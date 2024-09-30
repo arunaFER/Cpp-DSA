@@ -19,6 +19,7 @@ public:
     void reverseList();
     void recursionReverseListHelper(Node* n);
     void recursionReverse();
+    void stackReverse();
     
     void display();
     void recursionDisplayHelper(Node* n);

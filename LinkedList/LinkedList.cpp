@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 #include "LinkedList.h"
 
 LinkedList::LinkedList()
@@ -90,6 +91,7 @@ void LinkedList::deleteNode(int position){
     delete temp2;
 }
 
+// reverse list
 void LinkedList::reverseList(){
 
     if (head == nullptr)
@@ -113,7 +115,7 @@ void LinkedList::reverseList(){
 }
 
 
-
+// reverse list with recursion
 void LinkedList::recursionReverseListHelper(Node* n){
     if (n->next == nullptr){
         head = n;
@@ -153,7 +155,7 @@ void LinkedList::display(){
 }
 
 
-
+// display list with recursion
 void LinkedList::recursionDisplayHelper(Node* n){
     if (n == nullptr)
         return;
@@ -169,7 +171,7 @@ void LinkedList::recursionDisplay(){
 }
 
 
-
+// display list in reverse with recursion
 void LinkedList::reverseRecursionDisplayHelper(Node* n){
     if (n == nullptr)
         return;
@@ -184,3 +186,29 @@ void LinkedList::reverseRecursionDisplay(){
     std::cout << std::endl;
 }
 
+// reverse linked list using stack
+
+void LinkedList::stackReverse(){
+    if (head == nullptr)
+        return;
+
+    std::stack<Node*> s;
+
+    Node* temp = head;
+
+    while (temp != nullptr){
+        s.push(temp);
+        temp = temp->next;
+    }
+
+    temp = s.top();
+    head = temp;
+
+    while(!s.empty()){
+        temp->next = s.top();
+        s.pop();
+        temp = temp->next;
+    }
+
+    temp->next = nullptr;
+}
