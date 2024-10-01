@@ -187,7 +187,6 @@ void LinkedList::reverseRecursionDisplay(){
 }
 
 // reverse linked list using stack
-
 void LinkedList::stackReverse(){
     if (head == nullptr)
         return;
