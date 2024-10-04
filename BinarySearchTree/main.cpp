@@ -6,7 +6,9 @@ void displayMenu() {
     std::cout << "Binary Search Tree Menu:\n";
     std::cout << "1. Insert a value\n";
     std::cout << "2. Search for a value\n";
-    std::cout << "3. Exit\n";
+    std::cout << "3. Find minimum value\n";
+    std::cout << "4. Find maximum value\n";
+    std::cout << "0. Exit\n";
 }
 
 int main() {
@@ -14,7 +16,7 @@ int main() {
     int choice;
     int value;
 
-    do {
+    do { 
         displayMenu();
         std::cout << "Enter your choice: ";
         std::cin >> choice;
@@ -37,7 +39,25 @@ int main() {
                 }
                 break;
 
-            case 3: // Exit
+            case 3: // find min value
+                try {
+                        const int& minValue = bst.findMin();
+                        std::cout << "Minimum value: " << minValue << "\n";
+                    } catch (const std::runtime_error& e) {
+                        std::cout << e.what() << "\n";
+                    }
+                break;
+
+            case 4: // find max value
+                try {
+                        const int& maxValue = bst.findMax();
+                        std::cout << "Maximum value: " << maxValue << "\n";
+                    } catch (const std::runtime_error& e) {
+                        std::cout << e.what() << "\n";
+                    }
+                break;
+
+            case 0: // Exit
                 std::cout << "Exiting...\n";
                 break;
 
@@ -45,7 +65,7 @@ int main() {
                 std::cout << "Invalid choice. Please try again.\n";
         }
         std::cout << std::endl;
-    } while (choice != 3);
+    } while (choice != 0);
 
     return 0;
 }

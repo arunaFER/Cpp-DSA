@@ -19,6 +19,22 @@ bool BinarySearchTree::search(int value) const{
     return search(root, value);
 }
 
+const int& BinarySearchTree::findMin() const{
+   if (root == nullptr){
+        throw std::runtime_error("Binary search tree is empty");
+   } else {
+        return findMin(root);
+   }
+}
+
+const int& BinarySearchTree::findMax() const{
+   if (root == nullptr){
+        throw std::runtime_error("Binary search tree is empty");
+   } else {
+        return findMax(root);
+   }
+}
+
 // Private functions
 
 Node* BinarySearchTree::insert(Node* node, int value){
@@ -56,3 +72,18 @@ bool BinarySearchTree::search(Node* node, int value) const{
         return search(node->right, value);
     }
 }
+
+const int& BinarySearchTree::findMin(Node* node) const{
+    if (node->left == nullptr){
+        return node->data;
+    }
+    return findMin(node->left);
+}
+
+const int& BinarySearchTree::findMax(Node* node) const{
+    if (node->right == nullptr){
+        return node->data;
+    }
+    return findMax(node->right);
+}
+
