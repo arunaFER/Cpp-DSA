@@ -11,6 +11,7 @@ private:
     bool search(Node* node, int value) const;
     const int& findMin(Node* node) const;
     const int& findMax(Node* node) const;
+    int findHeight(Node* node) const;
 public:
     BinarySearchTree();
     ~BinarySearchTree();
@@ -18,6 +19,8 @@ public:
     bool search(int value) const;
     const int& findMin() const;
     const int& findMax() const;
+    int findHeight() const;
+    void levelOrderTraversal() const;
 };
 
 #endif

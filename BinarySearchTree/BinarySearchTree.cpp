@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 
 #include "Node.h"
 #include "BinarySearchTree.h"
@@ -19,6 +20,11 @@ bool BinarySearchTree::search(int value) const{
     return search(root, value);
 }
 
+int BinarySearchTree::findHeight() const{
+    return findHeight(root);
+}
+
+// check out optional in c++17
 const int& BinarySearchTree::findMin() const{
    if (root == nullptr){
         throw std::runtime_error("Binary search tree is empty");
@@ -33,6 +39,37 @@ const int& BinarySearchTree::findMax() const{
    } else {
         return findMax(root);
    }
+}
+
+void BinarySearchTree::levelOrderTraversal() const{
+    if (root == nullptr){
+        std::cout << "LevelOrderTraversal: Empty tree!" << std::endl;
+        return;
+    }
+
+    std::queue<Node*> q;
+    q.push(root);
+
+    std::cout << "LevelOrderTraversal: ";
+
+    while (!q.empty())
+    {
+        Node* current = q.front();
+        q.pop();
+
+        
+        std::cout << current->data << " ";
+
+        if (current->left != nullptr){
+            q.push(current->left);
+        }
+
+        if (current->right != nullptr){
+            q.push(current->right);
+        }
+    }
+    
+    std::cout << std::endl;
 }
 
 // Private functions
@@ -87,3 +124,13 @@ const int& BinarySearchTree::findMax(Node* node) const{
     return findMax(node->right);
 }
 
+int BinarySearchTree::findHeight(Node* node) const{
+    if (node == nullptr){
+        return -1;
+    }
+
+    int leftHeight = findHeight(node->left);
+    int rightHeight = findHeight(node->right);
+
+    return 1 + std::max(leftHeight, rightHeight);
+}
