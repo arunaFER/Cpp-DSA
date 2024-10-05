@@ -191,7 +191,7 @@ void BinarySearchTree::postOrderTraversal(Node* node) const{
     if (node == nullptr)
         return;
 
-    inOrderTraversal(node->left);
-    inOrderTraversal(node->right);
+    postOrderTraversal(node->left);
+    postOrderTraversal(node->right);
     std::cout << node->data << " ";
 }
