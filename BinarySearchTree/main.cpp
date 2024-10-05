@@ -51,5 +51,8 @@ int main() {
     // Display BST in inOrder
     bst.inOrderTraversal();
 
+    // Display BST in postOrder
+    bst.postOrderTraversal();
+
     return 0;
 }

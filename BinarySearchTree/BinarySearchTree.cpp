@@ -94,6 +94,17 @@ void BinarySearchTree::inOrderTraversal() const{
     std::cout << std::endl;
 }
 
+void BinarySearchTree::postOrderTraversal() const{
+    if (root == nullptr){
+        std::cout << "postOrderTraversal: Empty tree!" << std::endl;
+        return;
+    }
+
+    std::cout << "postOrderTraversal: ";
+    postOrderTraversal(root);
+    std::cout << std::endl;
+}
+
 
 // Private functions
 
@@ -174,4 +185,13 @@ void BinarySearchTree::inOrderTraversal(Node* node) const{
     inOrderTraversal(node->left);
     std::cout << node->data << " ";
     inOrderTraversal(node->right);
+}
+
+void BinarySearchTree::postOrderTraversal(Node* node) const{
+    if (node == nullptr)
+        return;
+
+    inOrderTraversal(node->left);
+    inOrderTraversal(node->right);
+    std::cout << node->data << " ";
 }
