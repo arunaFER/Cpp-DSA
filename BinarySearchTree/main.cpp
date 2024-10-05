@@ -45,5 +45,11 @@ int main() {
     // Display BST in level order
     bst.levelOrderTraversal();
 
+    // Display BST in preOrder
+    bst.preOrderTraversal();
+
+    // Display BST in inOrder
+    bst.inOrderTraversal();
+
     return 0;
 }

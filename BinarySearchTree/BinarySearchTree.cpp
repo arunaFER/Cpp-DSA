@@ -72,6 +72,29 @@ void BinarySearchTree::levelOrderTraversal() const{
     std::cout << std::endl;
 }
 
+void BinarySearchTree::preOrderTraversal() const{
+    if (root == nullptr){
+        std::cout << "PreOrderTraversal: Empty tree!" << std::endl;
+        return;
+    }
+
+    std::cout << "PreOrderTraversal: ";
+    preOrderTraversal(root);
+    std::cout << std::endl;
+}
+
+void BinarySearchTree::inOrderTraversal() const{
+    if (root == nullptr){
+        std::cout << "inOrderTraversal: Empty tree!" << std::endl;
+        return;
+    }
+
+    std::cout << "inOrderTraversal: ";
+    inOrderTraversal(root);
+    std::cout << std::endl;
+}
+
+
 // Private functions
 
 Node* BinarySearchTree::insert(Node* node, int value){
@@ -133,4 +156,22 @@ int BinarySearchTree::findHeight(Node* node) const{
     int rightHeight = findHeight(node->right);
 
     return 1 + std::max(leftHeight, rightHeight);
+}
+
+void BinarySearchTree::preOrderTraversal(Node* node) const{
+    if (node == nullptr)
+        return;
+
+    std::cout << node->data << " ";
+    preOrderTraversal(node->left);
+    preOrderTraversal(node->right);
+}
+
+void BinarySearchTree::inOrderTraversal(Node* node) const{
+    if (node == nullptr)
+        return;
+
+    inOrderTraversal(node->left);
+    std::cout << node->data << " ";
+    inOrderTraversal(node->right);
 }
