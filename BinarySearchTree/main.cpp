@@ -54,5 +54,7 @@ int main() {
     // Display BST in postOrder
     bst.postOrderTraversal();
 
+    bst.isBinarySearchTree();
+
     return 0;
 }

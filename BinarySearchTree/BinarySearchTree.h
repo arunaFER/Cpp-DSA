@@ -12,9 +12,14 @@ private:
     const int& findMin(Node* node) const;
     const int& findMax(Node* node) const;
     int findHeight(Node* node) const;
+    
     void preOrderTraversal(Node* node) const;
     void inOrderTraversal(Node* node) const;
     void postOrderTraversal(Node* node) const;
+
+    bool isSubTreeLesser(Node* root, int value) const;
+    bool isSubTreeGreater(Node* root, int value) const;
+    bool isBinarySearchTree(Node* root) const;
 public:
     BinarySearchTree();
     ~BinarySearchTree();
@@ -23,10 +28,13 @@ public:
     const int& findMin() const;
     const int& findMax() const;
     int findHeight() const;
+    
     void levelOrderTraversal() const;
     void preOrderTraversal() const;
     void inOrderTraversal() const;
     void postOrderTraversal() const;
+
+    void isBinarySearchTree() const;
 };
 
 #endif

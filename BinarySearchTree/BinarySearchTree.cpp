@@ -105,6 +105,19 @@ void BinarySearchTree::postOrderTraversal() const{
     std::cout << std::endl;
 }
 
+void BinarySearchTree::isBinarySearchTree() const{
+    if (root == nullptr){
+            std::cout << "isBinarySearchTree: Empty tree!" << std::endl;
+            return;
+    }
+
+    if (isBinarySearchTree(root)){
+        std::cout << "isBinarySearchTree: true!" << std::endl;
+    } else {
+        std::cout << "isBinarySearchTree: false!" << std::endl;
+    }
+}
+
 
 // Private functions
 
@@ -194,4 +207,46 @@ void BinarySearchTree::postOrderTraversal(Node* node) const{
     postOrderTraversal(node->left);
     postOrderTraversal(node->right);
     std::cout << node->data << " ";
+}
+
+bool BinarySearchTree::isSubTreeLesser(Node* root, int value) const{
+    if (root == nullptr){
+        return true;
+    }
+
+    if (root->data < value
+        && isSubTreeLesser(root->left, value)
+        && isSubTreeLesser(root->right, value)){
+            return true;
+    } else {
+        return false;
+    }
+}
+
+bool BinarySearchTree::isSubTreeGreater(Node* root, int value) const{
+    if (root == nullptr){
+        return true;
+    }
+
+    if (root->data > value
+        && isSubTreeGreater(root->left, value)
+        && isSubTreeGreater(root->right, value)){
+            return true;
+    } else {
+        return false;
+    }
+}
+
+bool BinarySearchTree::isBinarySearchTree(Node* root) const{
+    if (root == nullptr)
+        return true;
+
+    if (isSubTreeLesser(root->left, root->data)
+        && isSubTreeGreater(root->right, root->data)
+        && isBinarySearchTree(root->left)
+        && isBinarySearchTree(root->right)){
+            return true;
+    } else {
+        return false;
+    }
 }
