@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <climits>
+#include <vector>
 
 #include "Node.h"
 #include "BinarySearchTree.h"
@@ -126,6 +127,14 @@ void BinarySearchTree::isBstRangeBased() const{
     }
 
     if (isBSTUtilRangeBased(root, INT_MIN, INT_MAX)){
+        std::cout << "isBinarySearchTree: true!" << std::endl;
+    } else {
+        std::cout << "isBinarySearchTree: false!" << std::endl;
+    }
+}
+
+void BinarySearchTree::isBstInOrder(){
+    if (isBstInOrderUtil()){
         std::cout << "isBinarySearchTree: true!" << std::endl;
     } else {
         std::cout << "isBinarySearchTree: false!" << std::endl;
@@ -278,4 +287,30 @@ bool BinarySearchTree::isBSTUtilRangeBased(Node* root, int minValue, int maxValu
     } else {
         return false;
     }
+}
+
+void BinarySearchTree::isBstInOrderTraversal(Node* node, std::vector<int> &vector){
+    if (node == nullptr)
+        return;
+
+    isBstInOrderTraversal(node->left, vector);
+    vector.push_back(node->data);
+    isBstInOrderTraversal(node->right, vector);
+}
+
+bool BinarySearchTree::isBstInOrderUtil(){
+    if (root == nullptr){
+            std::cout << "isBinarySearchTree: Empty tree!" << std::endl;
+            return false;
+    }
+
+    std::vector<int> sortedVector;
+    isBstInOrderTraversal(root, sortedVector);
+
+    for (size_t i {1}; i < sortedVector.size(); ++i){
+        if (sortedVector.at(i) < sortedVector.at(i - 1))
+            return false;
+    }
+
+    return true;
 }

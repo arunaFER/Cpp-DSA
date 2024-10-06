@@ -1,6 +1,8 @@
 #ifndef _BINARYSEARCHTREE_H_
 #define _BINARYSEARCHTREE_H_
 
+#include <vector>
+
 #include "Node.h"
 
 class BinarySearchTree{
@@ -13,6 +15,7 @@ private:
     const int& findMax(Node* node) const;
     int findHeight(Node* node) const;
     
+    // printing
     void preOrderTraversal(Node* node) const;
     void inOrderTraversal(Node* node) const;
     void postOrderTraversal(Node* node) const;
@@ -24,6 +27,10 @@ private:
 
     // check bst min max or range based
     bool isBSTUtilRangeBased(Node* root, int minValue, int maxValue) const;
+
+    // check if bst using inOrder
+    void isBstInOrderTraversal(Node* node, std::vector<int> &vector);
+    bool isBstInOrderUtil();
 public:
     BinarySearchTree();
     ~BinarySearchTree();
@@ -40,6 +47,7 @@ public:
 
     void isBinarySearchTree() const;
     void isBstRangeBased() const;
+    void isBstInOrder();
 };
 
 #endif
