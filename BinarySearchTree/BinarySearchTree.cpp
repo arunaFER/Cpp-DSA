@@ -155,6 +155,16 @@ void BinarySearchTree::isBstInOrder(){
     }
 }
 
+void BinarySearchTree::deleteNode(int data){
+    if (root == nullptr){
+            std::cout << "Bst delete node: Empty tree!" << std::endl;
+            return;
+    }
+
+    root = deleteNodeHelper(root, data);
+    std::cout << "Node " << data << "deleted!" << std::endl;
+}
+
 /*
 ################### Private functions ###################
 */
@@ -353,4 +363,45 @@ bool BinarySearchTree::isBstInOrderTraversal(Node* node, int &prev){
 
     // check right node finally
     return isBstInOrderTraversal(node->right, prev);
+}
+
+Node* BinarySearchTree::findMinNode(Node* node){
+    while(node->left != nullptr){
+        node = node->left;
+    }
+    return node;
+}
+
+Node* BinarySearchTree::deleteNodeHelper(Node* root, int data){
+    if (root == nullptr){
+        return root;
+    } else if (data < root->data){
+        root->left = deleteNodeHelper(root->left, data);
+    } else if (data > root->data){
+        root->right = deleteNodeHelper(root->right, data);
+    } else { // Node Found
+        // case 1: no children
+        if (root->left == nullptr && root->right == nullptr){
+            delete root;
+            root = nullptr;
+        }
+        // case 2: one child
+        else if (root->left == nullptr){
+            Node* temp = root;
+            root = root->right;
+            delete temp;
+        }
+        else if (root->right == nullptr){
+            Node* temp = root;
+            root = root->left;
+            delete temp;
+        }
+        // case 3: 2 children
+        else{
+            Node* temp = findMinNode(root->right);
+            root->data = temp->data;
+            root->right = deleteNodeHelper(root->right, temp->data);
+        }
+    }
+    return root;
 }

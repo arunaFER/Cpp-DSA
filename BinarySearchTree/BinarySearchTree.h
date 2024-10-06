@@ -33,6 +33,9 @@ private:
     // bool isBstInOrderUtil();
 
     bool isBstInOrderTraversal(Node* node, int &prev); // in place validation
+
+    Node* findMinNode(Node* node);
+    Node* deleteNodeHelper(Node* root, int data);
 public:
     BinarySearchTree();
     ~BinarySearchTree();
@@ -50,6 +53,8 @@ public:
     void isBinarySearchTree() const;
     void isBstRangeBased() const;
     void isBstInOrder();
+
+    void deleteNode(int data);
 };
 
 #endif
