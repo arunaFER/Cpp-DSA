@@ -17,9 +17,13 @@ private:
     void inOrderTraversal(Node* node) const;
     void postOrderTraversal(Node* node) const;
 
+    // check bst naive method
     bool isSubTreeLesser(Node* root, int value) const;
     bool isSubTreeGreater(Node* root, int value) const;
     bool isBinarySearchTree(Node* root) const;
+
+    // check bst min max or range based
+    bool isBSTUtilRangeBased(Node* root, int minValue, int maxValue) const;
 public:
     BinarySearchTree();
     ~BinarySearchTree();
@@ -35,6 +39,7 @@ public:
     void postOrderTraversal() const;
 
     void isBinarySearchTree() const;
+    void isBstRangeBased() const;
 };
 
 #endif

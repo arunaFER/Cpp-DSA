@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <climits>
 
 #include "Node.h"
 #include "BinarySearchTree.h"
@@ -118,8 +119,22 @@ void BinarySearchTree::isBinarySearchTree() const{
     }
 }
 
+void BinarySearchTree::isBstRangeBased() const{
+    if (root == nullptr){
+            std::cout << "isBinarySearchTree: Empty tree!" << std::endl;
+            return;
+    }
 
-// Private functions
+    if (isBSTUtilRangeBased(root, INT_MIN, INT_MAX)){
+        std::cout << "isBinarySearchTree: true!" << std::endl;
+    } else {
+        std::cout << "isBinarySearchTree: false!" << std::endl;
+    }
+}
+
+/*
+################### Private functions ###################
+*/
 
 Node* BinarySearchTree::insert(Node* node, int value){
     if (node == nullptr){
@@ -245,6 +260,20 @@ bool BinarySearchTree::isBinarySearchTree(Node* root) const{
         && isSubTreeGreater(root->right, root->data)
         && isBinarySearchTree(root->left)
         && isBinarySearchTree(root->right)){
+            return true;
+    } else {
+        return false;
+    }
+}
+
+bool BinarySearchTree::isBSTUtilRangeBased(Node* root, int minValue, int maxValue) const{
+    if (root == nullptr)
+        return true;
+
+    if (root->data > minValue 
+        && root->data < maxValue
+        && isBSTUtilRangeBased(root->left, minValue, root->data)
+        && isBSTUtilRangeBased(root->right, root->data, maxValue)){
             return true;
     } else {
         return false;

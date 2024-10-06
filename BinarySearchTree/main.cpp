@@ -55,6 +55,7 @@ int main() {
     bst.postOrderTraversal();
 
     bst.isBinarySearchTree();
+    bst.isBstRangeBased();
 
     return 0;
 }
