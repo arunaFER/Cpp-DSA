@@ -133,8 +133,22 @@ void BinarySearchTree::isBstRangeBased() const{
     }
 }
 
+// void BinarySearchTree::isBstInOrder(){
+//     if (isBstInOrderUtil()){
+//         std::cout << "isBinarySearchTree: true!" << std::endl;
+//     } else {
+//         std::cout << "isBinarySearchTree: false!" << std::endl;
+//     }
+// }
+
 void BinarySearchTree::isBstInOrder(){
-    if (isBstInOrderUtil()){
+    if (root == nullptr){
+            std::cout << "isBinarySearchTree: Empty tree!" << std::endl;
+            return;
+    }
+
+    int prev = INT_MIN;
+    if (isBstInOrderTraversal(root, prev)){
         std::cout << "isBinarySearchTree: true!" << std::endl;
     } else {
         std::cout << "isBinarySearchTree: false!" << std::endl;
@@ -289,28 +303,54 @@ bool BinarySearchTree::isBSTUtilRangeBased(Node* root, int minValue, int maxValu
     }
 }
 
-void BinarySearchTree::isBstInOrderTraversal(Node* node, std::vector<int> &vector){
+// in order bst check but using additional vector
+
+// void BinarySearchTree::isBstInOrderTraversal(Node* node, std::vector<int> &vector){
+//     if (node == nullptr)
+//         return;
+
+//     isBstInOrderTraversal(node->left, vector);
+//     vector.push_back(node->data);
+//     isBstInOrderTraversal(node->right, vector);
+// }
+
+// bool BinarySearchTree::isBstInOrderUtil(){
+//     if (root == nullptr){
+//             std::cout << "isBinarySearchTree: Empty tree!" << std::endl;
+//             return false;
+//     }
+
+//     std::vector<int> sortedVector;
+//     isBstInOrderTraversal(root, sortedVector);
+
+//     for (size_t i {1}; i < sortedVector.size(); ++i){
+//         if (sortedVector.at(i) < sortedVector.at(i - 1))
+//             return false;
+//     }
+
+//     return true;
+// }
+
+// in order IN_PLACE bst check
+// left, root, right
+bool BinarySearchTree::isBstInOrderTraversal(Node* node, int &prev){
     if (node == nullptr)
-        return;
+        return true;
 
-    isBstInOrderTraversal(node->left, vector);
-    vector.push_back(node->data);
-    isBstInOrderTraversal(node->right, vector);
-}
-
-bool BinarySearchTree::isBstInOrderUtil(){
-    if (root == nullptr){
-            std::cout << "isBinarySearchTree: Empty tree!" << std::endl;
-            return false;
+    // check for left node first
+    if (!isBstInOrderTraversal(node->left, prev)){
+        return false;
     }
 
-    std::vector<int> sortedVector;
-    isBstInOrderTraversal(root, sortedVector);
+    // check root
+    if (node->data <= prev)
+        return false;
 
-    for (size_t i {1}; i < sortedVector.size(); ++i){
-        if (sortedVector.at(i) < sortedVector.at(i - 1))
-            return false;
-    }
+    // Before we go to right, now prev value
+    // is current node value.
+    // ie. all right node values must be greater
+    prev = node->data;
 
-    return true;
+    // check right node finally
+    return isBstInOrderTraversal(node->right, prev);
 }

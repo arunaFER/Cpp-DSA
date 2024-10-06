@@ -56,7 +56,7 @@ int main() {
 
     bst.isBinarySearchTree();
     bst.isBstRangeBased();
-    bst.isBstInOrder();
+    bst.isBstInOrder(); // in place in order validation
 
     return 0;
 }

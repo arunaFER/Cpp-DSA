@@ -29,8 +29,10 @@ private:
     bool isBSTUtilRangeBased(Node* root, int minValue, int maxValue) const;
 
     // check if bst using inOrder
-    void isBstInOrderTraversal(Node* node, std::vector<int> &vector);
-    bool isBstInOrderUtil();
+    // void isBstInOrderTraversal(Node* node, std::vector<int> &vector);
+    // bool isBstInOrderUtil();
+
+    bool isBstInOrderTraversal(Node* node, int &prev); // in place validation
 public:
     BinarySearchTree();
     ~BinarySearchTree();
