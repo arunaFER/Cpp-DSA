@@ -165,6 +165,67 @@ void BinarySearchTree::deleteNode(int data){
     std::cout << "Node " << data << "deleted!" << std::endl;
 }
 
+Node* BinarySearchTree::findNode(int value) {
+    Node* current = root;
+    while (current != nullptr) {
+        if (value == current->data) {
+            return current;
+        } else if (value < current->data) {
+            current = current->left;
+        } else {
+            current = current->right;
+        }
+    }
+    return nullptr;
+}
+
+
+Node* BinarySearchTree::inOrderSuccessor(Node* node) {
+    if (node->right != nullptr) {
+        // Successor is the min node in the right subtree
+        return findMinNode(node->right);
+    } else {
+        // No right subtree, traverse upwards to find successor
+        Node* successor = nullptr;
+        Node* ancestor = root;
+
+        while (ancestor != nullptr && ancestor != node) {
+            if (node->data < ancestor->data) {
+                successor = ancestor; // Closest larger ancestor
+                ancestor = ancestor->left;
+            } else {
+                ancestor = ancestor->right;
+            }
+        }
+
+        return successor;
+    }
+}
+
+Node* BinarySearchTree::inOrderPredecessor(Node* node) {
+    if (node->left != nullptr) {
+        // Predecessor is the max node in left subtree
+        return findMaxNode(node->left);
+    } else {
+        // No left subtree, traverse upwards to find predecessor
+        Node* predecessor = nullptr;
+        Node* ancestor = root;
+
+        while (ancestor != nullptr && ancestor != node) {
+            if (node->data > ancestor->data) {
+                predecessor = ancestor; // So far this is the closest smaller ancestor
+                ancestor = ancestor->right;
+            } else {
+                ancestor = ancestor->left;
+            }
+        }
+    
+        return predecessor;
+    }
+}
+
+
+
 /*
 ################### Private functions ###################
 */
@@ -368,6 +429,13 @@ bool BinarySearchTree::isBstInOrderTraversal(Node* node, int &prev){
 Node* BinarySearchTree::findMinNode(Node* node){
     while(node->left != nullptr){
         node = node->left;
+    }
+    return node;
+}
+
+Node* BinarySearchTree::findMaxNode(Node* node){
+    while(node != nullptr){
+        node = node->right;
     }
     return node;
 }

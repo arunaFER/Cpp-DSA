@@ -35,12 +35,15 @@ private:
     bool isBstInOrderTraversal(Node* node, int &prev); // in place validation
 
     Node* findMinNode(Node* node);
+    Node* findMaxNode(Node* node);
+
     Node* deleteNodeHelper(Node* root, int data);
 public:
     BinarySearchTree();
     ~BinarySearchTree();
     void insert(int value);
     bool search(int value) const;
+    Node* findNode(int value);
     const int& findMin() const;
     const int& findMax() const;
     int findHeight() const;
@@ -55,6 +58,10 @@ public:
     void isBstInOrder();
 
     void deleteNode(int data);
+
+    // successors
+    Node* inOrderSuccessor(Node* node);
+    Node* inOrderPredecessor(Node* node);
 };
 
 #endif

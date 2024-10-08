@@ -58,5 +58,26 @@ int main() {
     bst.isBstRangeBased();
     bst.isBstInOrder(); // in place in order validation
 
+    // Finding successor and predecessor
+    int testValue = 40;
+    Node* node = bst.findNode(testValue);
+    if (node != nullptr) {
+        Node* successor = bst.inOrderSuccessor(node);
+        if (successor) {
+            std::cout << "In-order Successor of " << testValue << " is: " << successor->data << "\n";
+        } else {
+            std::cout << "No in-order successor for " << testValue << "\n";
+        }
+
+        Node* predecessor = bst.inOrderPredecessor(node);
+        if (predecessor) {
+            std::cout << "In-order Predecessor of " << testValue << " is: " << predecessor->data << "\n";
+        } else {
+            std::cout << "No in-order predecessor for " << testValue << "\n";
+        }
+    } else {
+        std::cout << "Node with value " << testValue << " not found in the tree.\n";
+    }
+
     return 0;
 }
