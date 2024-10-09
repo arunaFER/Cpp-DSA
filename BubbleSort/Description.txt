@@ -1,0 +1,18 @@
+pseudocode
+
+BubbleSort(A, n){
+    for i = 0 to n - 1{
+        flag = 0
+        for j = 0 to n - i - 2{
+            if (A[i] < A[i + 1]){
+                swap(A[j], A[j + 1])
+                flag = 1
+            }
+        }
+        if (flag == 0)
+            break
+    }
+}
+
+void bubbleSort(int* A, int n)
+and n = sizeof(arr) / sizeof(arr[0])
