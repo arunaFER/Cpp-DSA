@@ -1,0 +1,60 @@
+pseudocode
+
+L is left array
+R is right array
+A is og array
+
+Merge(L, R, A){
+    nL = length(L)
+    nR = length(R)
+    i = j = k = 0
+
+    // compare both arrays and build og array
+    while (i < nL && j < nR){
+        if (L[i] <= R[j]){
+            A[k] = L[i]
+            i = i + 1
+        } else {
+            A[k] = R[j]
+            j = j + 1
+        }
+        k = k + 1
+    }
+
+    // if one array is exhausted
+    // once first while is over only one of below loops
+    // will activate
+    while (i < nL){
+        A[k] = L[i]
+        i = i + 1
+        k = k + 1
+    }
+
+    while (j < R[j]){
+        A[k] = R[j]
+        j = j + 1
+        k = k + 1
+    }
+}
+
+MergeSort(A){
+    n = length(A)
+
+    if (n < 2)
+        return
+
+    mid = n / 2
+    left = array[mid]
+    right = array[n - mid]
+
+    for (i = 0 to mid - 1){
+        left[i] = A[i]
+    }
+    for (i = mid to n - 1){
+        right[i - mid] = A[i]
+    }
+
+    MergeSort(left)
+    MergeSort(right)
+    Merge(left, right, A)
+}
