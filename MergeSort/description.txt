@@ -30,7 +30,7 @@ Merge(L, R, A){
         k = k + 1
     }
 
-    while (j < R[j]){
+    while (j < nR){
         A[k] = R[j]
         j = j + 1
         k = k + 1
@@ -44,8 +44,8 @@ MergeSort(A){
         return
 
     mid = n / 2
-    left = array[mid]
-    right = array[n - mid]
+    left = new array[mid]
+    right = new array[n - mid]
 
     for (i = 0 to mid - 1){
         left[i] = A[i]
