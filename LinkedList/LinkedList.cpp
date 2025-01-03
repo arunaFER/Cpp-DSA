@@ -91,6 +91,45 @@ void LinkedList::deleteNode(int position){
     delete temp2;
 }
 
+// Improved delete node
+// void LinkedList::deleteNode(int position) {
+//     if (position <= 0) {
+//         std::cout << "Invalid position. Position must be greater than 0.\n";
+//         return;
+//     }
+
+//     if (head == nullptr) {
+//         std::cout << "List is empty. Cannot delete node.\n";
+//         return;
+//     }
+
+//     Node* temp1 = head;
+
+//     // Special case: delete the head node
+//     if (position == 1) {
+//         head = temp1->next; // Move head to the next node
+//         delete temp1;       // Free the old head node
+//         return;
+//     }
+
+//     // Traverse to the (position-1)-th node (1-based index)
+//     for (int i = 1; i < position - 1 && temp1 != nullptr; ++i) {
+//         temp1 = temp1->next;
+//     }
+
+//     // Check if the position is out of bounds
+//     if (temp1 == nullptr || temp1->next == nullptr) {
+//         std::cout << "Position is out of bounds. Cannot delete node.\n";
+//         return;
+//     }
+
+//     // Delete the node at the given position
+//     Node* temp2 = temp1->next;  // Node to be deleted
+//     temp1->next = temp2->next; // Link to the next node
+//     delete temp2;              // Free memory
+// }
+
+
 // reverse list
 void LinkedList::reverseList(){
 
@@ -124,8 +163,8 @@ void LinkedList::recursionReverseListHelper(Node* n){
 
     recursionReverseListHelper(n->next);
 
-    Node* m = n->next;
-    m->next = n;
+    Node* m = n->next; // n->next->next = n;
+    m->next = n;       // 
     n->next = nullptr;    
 }
     
